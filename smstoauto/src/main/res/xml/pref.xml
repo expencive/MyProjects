@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <EditTextPreference
+        android:key="telefon"
+        android:summary="Введите номер телефона системы Автолис"
+        android:title="Телефон"></EditTextPreference>
+    <EditTextPreference
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:key="serviceKey"
+        android:summary="Введите ключ управления системой Автолис"
+        android:title="Ключ управления"></EditTextPreference>
+</PreferenceScreen>
