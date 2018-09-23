@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:stretchColumns="1"
+    android:shrinkColumns="1">
+
+    <TableRow>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:text="@string/LoanAmount" />
+
+        <EditText
+            android:id="@+id/loan_amount"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal">
+
+            <requestFocus></requestFocus>
+        </EditText>
+    </TableRow>
+    <TableRow>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:text="@string/InteresRate" />
+        <EditText android:id="@+id/interest_rate"
+            android:inputType="numberDecimal"
+            android:layout_height="wrap_content"/>
+    </TableRow>
+    <TableRow>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:text="@string/loanPeriod" />
+        <EditText android:id="@+id/loan_period"
+            android:inputType="number"
+            android:layout_height="wrap_content"/>
+    </TableRow>
+    <TableRow>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_span="2"
+            android:onClick="showLoanPayments"
+            android:text="@string/CalculatePayment" />
+    </TableRow>
+    <TableRow android:layout_marginTop="20dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:text="@string/MesPlatej" />
+        <TextView android:id="@+id/monthly_payment_result"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#ff0000"
+            android:gravity="left"/>
+    </TableRow>
+    <TableRow>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:text="@string/TotalPayment" />
+        <TextView android:id="@+id/total_payments_result"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#ff0000"
+            android:gravity="left"/>
+    </TableRow>
+
+    <TableRow
+        layout_height="match_parent"
+        layout_width="match_parent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:text="@string/total_overpay" />
+
+        <TextView
+            android:id="@+id/total_overpay_result"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:textColor="#ff0000" />
+    </TableRow>
+    <TableRow>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_span="2"
+            android:onClick="onClickGraph"
+            android:text="@string/ButtonGraphPayment" />
+    </TableRow>
+</TableLayout>

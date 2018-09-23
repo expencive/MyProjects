@@ -1,1 +1,1 @@
-include ':app', ':smstoauto'
+include ':app', ':smstoauto', ':calculatorcredit'
