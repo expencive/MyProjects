@@ -35,7 +35,7 @@
 
             <RadioButton
                 android:id="@+id/rdiEasy"
-                android:text="Easy"
+                android:text="Легкая"
                 android:layout_weight="1"
                 android:theme="@style/MyRadioButton"
                 android:layout_width="0dp"
@@ -43,7 +43,7 @@
 
             <RadioButton
                 android:id="@+id/rdiMedium"
-                android:text="Medium"
+                android:text="Средняя"
                 android:layout_weight="1"
                 android:theme="@style/MyRadioButton"
                 android:layout_width="0dp"
@@ -51,7 +51,7 @@
 
             <RadioButton
                 android:id="@+id/rdiHard"
-                android:text="Hard"
+                android:text="Тяжелая"
                 android:layout_weight="1"
                 android:theme="@style/MyRadioButton"
                 android:layout_width="0dp"
@@ -64,6 +64,7 @@
 
     <ToggleButton
         android:id="@+id/switchAlarm"
+        android:visibility="invisible"
         android:layout_below="@+id/cardView"
         android:layout_centerHorizontal="true"
         android:textOn="On"
@@ -73,6 +74,7 @@
 
     <TimePicker
         android:id="@+id/timePicker"
+        android:visibility="invisible"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"></TimePicker>
 

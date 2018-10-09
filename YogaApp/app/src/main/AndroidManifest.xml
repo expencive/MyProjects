@@ -18,8 +18,11 @@
         </activity>
         <activity android:name=".ListExercises" />
         <activity android:name=".ViewExercise" />
-        <activity android:name=".SettingPage"></activity>
-        <receiver android:name=".AlarmNotificationReceiver"/>
+        <activity android:name=".SettingPage" />
+
+        <receiver android:name=".AlarmNotificationReceiver" />
+
+        <activity android:name=".Daily_Training"></activity>
     </application>
 
 </manifest>

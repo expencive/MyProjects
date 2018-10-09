@@ -5,10 +5,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 
 public class MainActivity extends AppCompatActivity {
 
     Button btnExercises, btnSetting, btnCalendar;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
 
         btnExercises = (Button) findViewById(R.id.btnExercises);
         btnSetting = (Button) findViewById(R.id.btnSetting);
+
 
         btnSetting.setOnClickListener(new View.OnClickListener() {
             @Override

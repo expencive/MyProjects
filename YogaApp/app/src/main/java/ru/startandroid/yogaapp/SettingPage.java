@@ -102,7 +102,7 @@ public class SettingPage extends AppCompatActivity {
 
     private void saveWorkoutMode() {
         int selectedID = rdiGroup.getCheckedRadioButtonId();
-        selectedID = selectedID - 2131427431;
+        selectedID = selectedID - 2131427457;
         if (selectedID == 0)
             yogaDB.saveSettingMode(0);
         else if (selectedID == 1)
@@ -143,7 +143,7 @@ public class SettingPage extends AppCompatActivity {
     }
     private void setTextMode() {
         int selectedID = rdiGroup.getCheckedRadioButtonId();
-        selectedID = selectedID - 2131427431;
+        selectedID = selectedID - 2131427457;
         tv.setText("" + selectedID);
         if (selectedID == 0)
             yogaDB.saveSettingMode(0);

@@ -10,10 +10,10 @@
 
     <ImageView
         android:id="@+id/btnTraining"
-        android:layout_centerInParent="true"
-        android:src="@drawable/play"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:src="@drawable/logo" />
     
     <LinearLayout
         android:layout_alignParentBottom="true"
@@ -21,9 +21,29 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
+        <info.hoang8f.widget.FButton
+            android:id="@+id/btnCalendar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="4dp"
+            android:layout_marginTop="8dp"
+            android:layout_weight="1"
+            android:text="Календарь"
+            android:textColor="@android:color/white"
+            android:visibility="invisible"
+            app:buttonColor="@color/colorPrimary"
+            app:shadowColor="@color/colorPrimaryDark"
+            app:shadowEnabled="true"
+            app:shadowHeight="2dp"
+
+            />
+
         <LinearLayout
             android:layout_weight="2"
             android:orientation="horizontal"
+            android:layout_marginBottom="8dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
@@ -47,7 +67,7 @@
 
             <info.hoang8f.widget.FButton
                 android:id="@+id/btnSetting"
-                android:text="Установки"
+                android:text="Сложность"
                 android:textColor="@android:color/white"
                 android:layout_marginLeft="4dp"
                 android:layout_marginRight="8dp"
@@ -60,27 +80,9 @@
                 app:shadowHeight="2dp"
 
                 />
-            
+
         </LinearLayout>
 
-
-        <info.hoang8f.widget.FButton
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
-            android:id="@+id/btnCalendar"
-            android:text="Календарь"
-            android:textColor="@android:color/white"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="4dp"
-            android:layout_weight="1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:buttonColor="@color/colorPrimary"
-            app:shadowColor="@color/colorPrimaryDark"
-            app:shadowEnabled="true"
-            app:shadowHeight="2dp"
-
-            />
 
     </LinearLayout>
 
