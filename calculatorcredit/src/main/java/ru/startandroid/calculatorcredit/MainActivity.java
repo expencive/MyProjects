@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
         String et3 = mLoanPeriod.getText().toString();
 
         if ((et1.length() == 0) || et2.length() == 0 || et3.length() == 0) {
-            Toast.makeText(getApplicationContext(), "Вы не ввели запрашиваемые данные", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "Заполните все поля", Toast.LENGTH_SHORT).show();
         } else {
             double loanAmount = Integer.parseInt(mLoanAmount.getText().toString());
             double interestRate = (Integer.parseInt(mInterestRate.getText().toString()));
@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
         String et3 = mLoanPeriod.getText().toString();
 
         if ((et1.length() == 0) || et2.length() == 0 || et3.length() == 0) {
-            Toast.makeText(getApplicationContext(), "Вы не ввели запрашиваемые данные", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "Заполните все поля", Toast.LENGTH_SHORT).show();
         } else {
             Intent intent = new Intent(this, GraphPayments.class);
             intent.putExtra("mLoanAmount", mLoanAmount.getText().toString());
