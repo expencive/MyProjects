@@ -81,7 +81,6 @@ public class GraphPaymentsExperemental extends AppCompatActivity {
             @Override
             public void onClick(View v)
             {
-                Toast.makeText(GraphPaymentsExperemental.this, "Кнопка работает", Toast.LENGTH_SHORT).show();
                 final EditText taskEditText = new EditText(GraphPaymentsExperemental.this);
                 AlertDialog dialog = new AlertDialog.Builder(GraphPaymentsExperemental.this)
                         .setTitle("Название кредита")
