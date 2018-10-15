@@ -16,4 +16,5 @@
     <string name="loanPeriod">Срок кредита (месяцев):</string>
     <string name="CalculatePayment">Рассчитать платеж:</string>
     <string name="ButtonGraphPayment">Показать график платежей</string>
+    <string name="ButtonSavedCredits">Сохраненные кредиты</string>
 </resources>

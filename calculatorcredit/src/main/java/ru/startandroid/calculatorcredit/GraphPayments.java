@@ -23,9 +23,9 @@ public class GraphPayments extends AppCompatActivity {
 
         LayoutInflater ltInflater = getLayoutInflater();
 
-        double loanAmount = Integer.parseInt(getIntent().getStringExtra("mLoanAmount"));
-        double interestRate = Integer.parseInt(getIntent().getStringExtra("mInterestRate"));
-        double loanPeriod = Integer.parseInt(getIntent().getStringExtra("mLoanPeriod"));
+        double loanAmount = Integer.parseInt(getIntent().getStringExtra("tvLoanAmount"));
+        double interestRate = Integer.parseInt(getIntent().getStringExtra("tvInterestRate"));
+        double loanPeriod = Integer.parseInt(getIntent().getStringExtra("tvLoanPeriod"));
         double r = interestRate/1200;
         double r1 = Math.pow(r+1,loanPeriod);
 

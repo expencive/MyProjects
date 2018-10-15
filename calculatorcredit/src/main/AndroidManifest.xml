@@ -16,7 +16,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".GraphPayments"></activity>
+        <activity android:name=".GraphPayments" />
+        <activity android:name=".GraphPaymentsExperemental" />
+        <activity android:name=".SavedCreditsList" />
+        <activity android:name=".SavedCreditListCursorAdapter"></activity>
     </application>
 
 </manifest>

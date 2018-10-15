@@ -2,7 +2,9 @@ package ru.startandroid.calculatorcredit;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.Cursor;
 import android.icu.text.DecimalFormat;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -10,16 +12,20 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import ru.startandroid.calculatorcredit.Database.DatabaseHelper;
+
 public class MainActivity extends AppCompatActivity {
 
     EditText mLoanAmount, mInterestRate, mLoanPeriod;
     TextView mMontlyPaymentResult, mTotalPaymentsResult, mTotalOverpayResult;
     SharedPreferences sp;
+    DatabaseHelper myDb;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        myDb = new DatabaseHelper(this);
 
         mLoanAmount = (EditText)findViewById(R.id.loan_amount);
         mInterestRate = (EditText)findViewById(R.id.interest_rate);
@@ -60,11 +66,44 @@ public class MainActivity extends AppCompatActivity {
         if ((et1.length() == 0) || et2.length() == 0 || et3.length() == 0) {
             Toast.makeText(getApplicationContext(), "Заполните все поля", Toast.LENGTH_SHORT).show();
         } else {
-            Intent intent = new Intent(this, GraphPayments.class);
+            Intent intent = new Intent(this, GraphPaymentsExperemental.class);
             intent.putExtra("mLoanAmount", mLoanAmount.getText().toString());
             intent.putExtra("mInterestRate", mInterestRate.getText().toString());
             intent.putExtra("mLoanPeriod", mLoanPeriod.getText().toString());
             startActivity(intent);
         }
+    }
+    public void onClickSavedCredits(View clickedButton) {
+
+        Intent intent = new Intent(this, SavedCreditsList.class);
+        startActivity(intent);
+
+
+       /* Cursor res = myDb.getAllData();
+        if(res.getCount() == 0) {
+            // show message
+            showMessage("Error","Nothing found");
+            return;
+        }
+
+        StringBuffer buffer = new StringBuffer();
+        while (res.moveToNext()) {
+            buffer.append("Id :"+ res.getString(0)+"\n");
+            buffer.append("Title :"+ res.getString(1)+"\n");
+            buffer.append("LoanAmount :"+ res.getString(2)+"\n");
+            buffer.append("Interestrate :"+ res.getString(3)+"\n");
+            buffer.append("Loanperiod :"+ res.getString(4)+"\n\n");
+        }
+
+        // Show all data
+        showMessage("Data",buffer.toString());*/
+    }
+
+    public void showMessage(String title,String Message){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setCancelable(true);
+        builder.setTitle(title);
+        builder.setMessage(Message);
+        builder.show();
     }
 }
