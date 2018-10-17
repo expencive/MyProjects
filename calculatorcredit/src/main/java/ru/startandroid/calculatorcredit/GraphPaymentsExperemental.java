@@ -7,6 +7,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.icu.text.DecimalFormat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -98,9 +99,14 @@ public class GraphPaymentsExperemental extends AppCompatActivity {
 
                             }
                         })
+
                         .setNegativeButton("Отмена", null)
                         .create();
                 dialog.show();
+                dialog.getButton(DialogInterface.BUTTON_POSITIVE)
+                        .setTextColor(getResources().getColor(R.color.colorPrimary));
+                dialog.getButton(DialogInterface.BUTTON_NEGATIVE)
+                        .setTextColor(getResources().getColor(R.color.colorPrimary));
             }
         });
     }
