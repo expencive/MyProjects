@@ -123,4 +123,16 @@
             android:textColor="@color/colorPrimaryDark"
             />
     </TableRow>
+
+    <TableRow>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_span="2"
+            android:onClick="onClickSavedCreditsAdapter"
+            android:text="Сохраненные кредиты adapter"
+            android:textColor="@color/colorPrimaryDark"
+            />
+    </TableRow>
 </TableLayout>

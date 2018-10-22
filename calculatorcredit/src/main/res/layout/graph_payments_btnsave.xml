@@ -7,7 +7,7 @@
 
     <Button
         android:id="@+id/btnSave"
-        android:text="Сохранить"
+        android:text="Сохранить график платежей"
         android:textColor="@color/colorPrimaryDark"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

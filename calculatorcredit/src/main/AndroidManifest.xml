@@ -19,7 +19,8 @@
         <activity android:name=".GraphPayments" />
         <activity android:name=".GraphPaymentsExperemental" />
         <activity android:name=".SavedCreditsList" />
-        <activity android:name=".SavedCreditListCursorAdapter"></activity>
+        <activity android:name=".SavedCreditListCursorAdapter" />
+        <activity android:name=".SavedCreditsListAdapter"></activity>
     </application>
 
 </manifest>

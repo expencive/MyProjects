@@ -13,7 +13,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String DATABASE_NAME = "Credits.db";
     public static final String TABLE_NAME = "credits_table";
-    public static final String COL_1 = "ID";
+    public static final String COL_1 = "_id";
     public static final String COL_2 = "TITLE";
     public static final String COL_3 = "LOANAMOUNT";
     public static final String COL_4 = "INTERESTRATE";
@@ -25,7 +25,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("create table " + TABLE_NAME +" (ID INTEGER PRIMARY KEY AUTOINCREMENT,TITLE TEXT,LOANAMOUNT TEXT,INTERESTRATE TEXT,LOANPERIOD TEXT)");
+        db.execSQL("create table " + TABLE_NAME +" (_id INTEGER PRIMARY KEY AUTOINCREMENT,TITLE TEXT,LOANAMOUNT TEXT,INTERESTRATE TEXT,LOANPERIOD TEXT)");
 
     }
 
@@ -63,11 +63,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         contentValues.put(COL_3,loanamount);
         contentValues.put(COL_4,interestrate);
         contentValues.put(COL_5, loanperiod);
-        db.update(TABLE_NAME, contentValues, "ID = ?",new String[] { id });
+        db.update(TABLE_NAME, contentValues, "_id = ?",new String[] { id });
         return true;
     }
     public Integer deleteData(String id) {
         SQLiteDatabase db = this.getWritableDatabase();
-        return db.delete(TABLE_NAME, "ID = ?",new String[] {id});
+        return db.delete(TABLE_NAME, "_id = ?",new String[] {id});
     }
+
+
 }
