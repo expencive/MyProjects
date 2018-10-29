@@ -99,15 +99,6 @@ public class MainActivity extends AppCompatActivity {
         showMessage("Data",buffer.toString());*/
     }
 
-    public void onClickSavedCreditsAdapter(View clickedButton) {
-
-        Intent intent = new Intent(this, SavedCreditsListAdapter.class);
-        startActivity(intent);
-
-
-
-    }
-
     public void showMessage(String title,String Message){
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setCancelable(true);

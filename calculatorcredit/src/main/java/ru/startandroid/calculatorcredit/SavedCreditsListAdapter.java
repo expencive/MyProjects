@@ -51,7 +51,7 @@ public class SavedCreditsListAdapter extends AppCompatActivity {
         // добавляем контекстное меню к списку
         registerForContextMenu(lvData);
 
-        
+
 
         lvData.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
