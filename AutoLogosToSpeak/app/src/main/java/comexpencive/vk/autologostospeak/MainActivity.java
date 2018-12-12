@@ -56,6 +56,7 @@ public class MainActivity extends AppCompatActivity {
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(adapter);
+
     }
 
     private void initData() {
@@ -94,6 +95,17 @@ public class MainActivity extends AppCompatActivity {
         exerciseList.add(new Exercise(R.drawable.toyota, "ТОЙОТА"));
         exerciseList.add(new Exercise(R.drawable.volkswagen, "ФОЛЬКСВАГЕН"));
         exerciseList.add(new Exercise(R.drawable.volvo, "ВОЛЬВО"));
+        exerciseList.add(new Exercise(R.drawable.z1, "1"));
+        exerciseList.add(new Exercise(R.drawable.z2, "2"));
+        exerciseList.add(new Exercise(R.drawable.z3, "3"));
+        exerciseList.add(new Exercise(R.drawable.z4, "4"));
+        exerciseList.add(new Exercise(R.drawable.z5, "5"));
+        exerciseList.add(new Exercise(R.drawable.z6, "6"));
+        exerciseList.add(new Exercise(R.drawable.z7, "7"));
+        exerciseList.add(new Exercise(R.drawable.z8, "8"));
+        exerciseList.add(new Exercise(R.drawable.z9, "9"));
+        exerciseList.add(new Exercise(R.drawable.z10, "10"));
+
 
     }
 

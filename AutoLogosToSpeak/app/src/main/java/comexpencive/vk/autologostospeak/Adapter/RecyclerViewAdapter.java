@@ -48,7 +48,6 @@ class RecyclerViewHolder extends RecyclerView.ViewHolder implements View.OnClick
     @Override
     public void onClick(View view) {
         itemClickListener.onClick(view, getAdapterPosition());
-
     }
 }
 
@@ -81,8 +80,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewHolder
             public void onClick(View view, int position) {
 
                 MainActivity.speakText(exerciseList.get(position).getName());
-
-
             }
         });
 
