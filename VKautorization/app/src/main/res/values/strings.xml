@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">VKautorization</string>
+    <integer name="com_vk_sdk_AppId">6831876</integer>
+</resources>
