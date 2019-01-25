@@ -34,11 +34,9 @@ public class MainActivity extends AppCompatActivity {
 
     private String[] scope = new String[] {VKScope.MESSAGES, VKScope.FRIENDS, VKScope.WALL};
 
-    private ListView listViewUserName;
-
     private ListView listView;
 
-    VKList userName;
+    private VKList userName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,15 +55,11 @@ public class MainActivity extends AppCompatActivity {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             VKSdk.login(MainActivity.this, scope);
-
                         }
                     }).create();
             alertDialog.show();
         }
 
-
-        //String[] fingerprints = VKUtil.getCertificateFingerprint(this, this.getPackageName());
-        //Log.e("MyLog", Arrays.asList(fingerprints).toString());
     }
 
     @Override
@@ -126,8 +120,6 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-
-
 
     }
 
