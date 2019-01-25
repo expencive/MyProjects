@@ -38,6 +38,8 @@ public class MainActivity extends AppCompatActivity {
 
     private ListView listView;
 
+    VKList userName;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
         }else {
             AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this)
                     .setTitle("Предупреждение")
-                    .setMessage("Необходимо произвести авторизацию")
+                    .setMessage("Необходимо произвести авторизацию.")
                     .setPositiveButton("Авторизация", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
@@ -89,29 +91,18 @@ public class MainActivity extends AppCompatActivity {
 
     public void showList() {
 
-        listViewUserName = findViewById(R.id.list_view_userName);
         VKRequest requestUserName = VKApi.users().get();
         requestUserName.executeWithListener(new VKRequest.VKRequestListener() {
             @Override
             public void onComplete(VKResponse response) {
                 super.onComplete(response);
-
                 VKList listUserName = (VKList) response.parsedModel;
-
-
-                ArrayAdapter<String> userNameArrayAdapter = new ArrayAdapter<>(MainActivity.this, android.R.layout.simple_expandable_list_item_1, listUserName);
-                listViewUserName.setAdapter(userNameArrayAdapter);
+                userName = listUserName;
             }
         });
 
         listView = findViewById(R.id.list_view);
         VKRequest request = VKApi.friends().get(VKParameters.from(VKApiConst.FIELDS, "first_name,last_name"));
-
-
-        //VKRequest request = VKApi.friends().get(VKParameters.from(VKApiConst.FIELDS, "first_name,last_name"));
-
-
-
         request.executeWithListener(new VKRequest.VKRequestListener() {
             @Override
             public void onComplete(VKResponse response) {
@@ -119,9 +110,8 @@ public class MainActivity extends AppCompatActivity {
 
                 VKList list = (VKList) response.parsedModel;
 
-                String get = list.get(2).toString();
-
                 ArrayList<String> finalList = new ArrayList<>();
+                finalList.add("User Name: " + userName.get(0));
                 finalList.add("Friend: " + list.get(0));
                 finalList.add("Friend: " + list.get(1));
                 finalList.add("Friend: " + list.get(2));
@@ -131,7 +121,7 @@ public class MainActivity extends AppCompatActivity {
                 ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(MainActivity.this, android.R.layout.simple_expandable_list_item_1, finalList);
                 listView.setAdapter(arrayAdapter);
 
-                Toast.makeText(MainActivity.this, get, Toast.LENGTH_SHORT).show();
+
 
 
             }
@@ -149,6 +139,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         VKSdk.logout();
+        finish();
         return super.onOptionsItemSelected(item);
     }
 
