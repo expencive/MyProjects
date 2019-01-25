@@ -6,8 +6,11 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.vk.sdk.VKAccessToken;
@@ -20,14 +23,18 @@ import com.vk.sdk.api.VKError;
 import com.vk.sdk.api.VKParameters;
 import com.vk.sdk.api.VKRequest;
 import com.vk.sdk.api.VKResponse;
+import com.vk.sdk.api.methods.VKApiFriends;
 import com.vk.sdk.api.model.VKList;
 import com.vk.sdk.util.VKUtil;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public class MainActivity extends AppCompatActivity {
 
     private String[] scope = new String[] {VKScope.MESSAGES, VKScope.FRIENDS, VKScope.WALL};
+
+    private ListView listViewUserName;
 
     private ListView listView;
 
@@ -35,6 +42,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
 
         if (VKSdk.isLoggedIn()) {
             showList();
@@ -63,20 +72,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onResult(VKAccessToken res) {
 
-                listView = findViewById(R.id.list_view);
-
-                VKRequest request = VKApi.friends().get(VKParameters.from(VKApiConst.FIELDS, "first_name,last_name"));
-                request.executeWithListener(new VKRequest.VKRequestListener() {
-                    @Override
-                    public void onComplete(VKResponse response) {
-                        super.onComplete(response);
-
-                        VKList list = (VKList) response.parsedModel;
-
-                        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(MainActivity.this, android.R.layout.simple_list_item_1, list);
-                        listView.setAdapter(arrayAdapter);
-                    }
-                });
+                showList();
                 // Пользователь успешно авторизовался
                 Toast.makeText(getApplicationContext(), "Авторизация прошла удачно", Toast.LENGTH_SHORT).show();
 
@@ -93,9 +89,29 @@ public class MainActivity extends AppCompatActivity {
 
     public void showList() {
 
-        listView = findViewById(R.id.list_view);
+        listViewUserName = findViewById(R.id.list_view_userName);
+        VKRequest requestUserName = VKApi.users().get();
+        requestUserName.executeWithListener(new VKRequest.VKRequestListener() {
+            @Override
+            public void onComplete(VKResponse response) {
+                super.onComplete(response);
 
+                VKList listUserName = (VKList) response.parsedModel;
+
+
+                ArrayAdapter<String> userNameArrayAdapter = new ArrayAdapter<>(MainActivity.this, android.R.layout.simple_expandable_list_item_1, listUserName);
+                listViewUserName.setAdapter(userNameArrayAdapter);
+            }
+        });
+
+        listView = findViewById(R.id.list_view);
         VKRequest request = VKApi.friends().get(VKParameters.from(VKApiConst.FIELDS, "first_name,last_name"));
+
+
+        //VKRequest request = VKApi.friends().get(VKParameters.from(VKApiConst.FIELDS, "first_name,last_name"));
+
+
+
         request.executeWithListener(new VKRequest.VKRequestListener() {
             @Override
             public void onComplete(VKResponse response) {
@@ -103,10 +119,37 @@ public class MainActivity extends AppCompatActivity {
 
                 VKList list = (VKList) response.parsedModel;
 
-                ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(MainActivity.this, android.R.layout.simple_list_item_1, list);
+                String get = list.get(2).toString();
+
+                ArrayList<String> finalList = new ArrayList<>();
+                finalList.add("Friend: " + list.get(0));
+                finalList.add("Friend: " + list.get(1));
+                finalList.add("Friend: " + list.get(2));
+                finalList.add("Friend: " + list.get(3));
+                finalList.add("Friend: " + list.get(4));
+
+                ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(MainActivity.this, android.R.layout.simple_expandable_list_item_1, finalList);
                 listView.setAdapter(arrayAdapter);
+
+                Toast.makeText(MainActivity.this, get, Toast.LENGTH_SHORT).show();
+
+
             }
         });
 
+
+
     }
+
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuItem mi = menu.add(0,1, 0, "Выйти из аккаунта");
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        VKSdk.logout();
+        return super.onOptionsItemSelected(item);
+    }
+
 }
