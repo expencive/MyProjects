@@ -1,6 +1,8 @@
 package com.gmail.expencive.kidslearningsigns.Adapter;
 
 import android.content.Context;
+import android.speech.tts.TextToSpeech;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +18,9 @@ import com.gmail.expencive.kidslearningsigns.Model.KidsLearning;
 import com.gmail.expencive.kidslearningsigns.R;
 
 import java.util.List;
+import java.util.Locale;
+
+import static com.gmail.expencive.kidslearningsigns.MainActivity.speakText;
 
 class RecyclerViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
@@ -47,6 +52,11 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewHolder
 
     public List<KidsLearning> kidsLearningList;
     public Context context;
+    public static TextToSpeech mTTS;
+    public static String mTextRecieve;
+
+
+
 
     public RecyclerViewAdapter(List<KidsLearning> kidsLearningList, Context context) {
         this.kidsLearningList = kidsLearningList;
@@ -73,6 +83,9 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewHolder
 
 
 
+                speakText(kidsLearningList.get(position).getName());
+
+
             }
         });
 
@@ -83,4 +96,10 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewHolder
     public int getItemCount() {
         return kidsLearningList.size();
     }
+
+
+
+
+
 }
+

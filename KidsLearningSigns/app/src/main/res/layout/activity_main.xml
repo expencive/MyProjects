@@ -7,22 +7,30 @@
     tools:context=".MainActivity">
 
 
+    <TextView
+        android:id="@+id/title"
+        android:text="Учим знаки, цифры, буквы"
+        android:textColor="@android:color/white"
+        android:textSize="20sp"
+        android:gravity="center_vertical|center_horizontal"
+        android:background="@color/colorPrimary"
+        android:layout_width="match_parent"
+        android:layout_height="50dp" />
+
     <ImageView
         android:id="@+id/image_view_auto_logos"
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:src="@drawable/honda"
-        android:layout_alignParentTop="true"
-        android:layout_marginBottom="395dp" />
+        android:layout_below="@+id/title"
+        android:src="@drawable/honda" />
 
     <ImageView
         android:id="@+id/image_view_numbers"
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:layout_centerInParent="true"
-
-        android:src="@drawable/chevrolet"
-         />
+        android:layout_above="@+id/image_view_letters"
+        android:layout_below="@+id/image_view_auto_logos"
+        android:src="@drawable/chevrolet" />
 
     <ImageView
         android:id="@+id/image_view_letters"
@@ -30,8 +38,7 @@
         android:layout_height="200dp"
         android:src="@drawable/bmw"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="34dp"
-        android:contentDescription="TODO" />
+         />
 
 
 </RelativeLayout>

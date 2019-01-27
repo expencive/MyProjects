@@ -39,4 +39,11 @@ public class NumbersActivity extends AppCompatActivity {
         kidsLearningList.add(new KidsLearning(R.drawable.bmw, "ШЕВРОЛЕ"));
 
     }
+
+    @Override
+    public void finish() {
+        super.finish();
+
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+    }
 }
