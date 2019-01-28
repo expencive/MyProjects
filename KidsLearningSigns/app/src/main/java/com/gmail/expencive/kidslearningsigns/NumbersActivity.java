@@ -34,9 +34,16 @@ public class NumbersActivity extends AppCompatActivity {
 
     private void initData() {
 
-        kidsLearningList.add(new KidsLearning(R.drawable.bmw, "БМВ"));
-        kidsLearningList.add(new KidsLearning(R.drawable.bmw, "ХОНДА"));
-        kidsLearningList.add(new KidsLearning(R.drawable.bmw, "ШЕВРОЛЕ"));
+        kidsLearningList.add(new KidsLearning(R.drawable.z1, "1"));
+        kidsLearningList.add(new KidsLearning(R.drawable.z2, "2"));
+        kidsLearningList.add(new KidsLearning(R.drawable.z3, "3"));
+        kidsLearningList.add(new KidsLearning(R.drawable.z4, "4"));
+        kidsLearningList.add(new KidsLearning(R.drawable.z5, "5"));
+        kidsLearningList.add(new KidsLearning(R.drawable.z6, "6"));
+        kidsLearningList.add(new KidsLearning(R.drawable.z7, "7"));
+        kidsLearningList.add(new KidsLearning(R.drawable.z8, "8"));
+        kidsLearningList.add(new KidsLearning(R.drawable.z9, "9"));
+        kidsLearningList.add(new KidsLearning(R.drawable.z010, "0"));
 
     }
 

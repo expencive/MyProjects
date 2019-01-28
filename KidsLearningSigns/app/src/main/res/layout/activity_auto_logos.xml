@@ -8,7 +8,7 @@ tools:context=".AutoLogosActivity">
 
 <TextView
     android:id="@+id/title"
-    android:text="Логотипы Автомобилей"
+    android:text="Учим марки"
     android:textColor="@android:color/white"
     android:textSize="20sp"
     android:gravity="center_horizontal|center_vertical"

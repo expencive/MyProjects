@@ -30,8 +30,8 @@ public class MainActivity extends AppCompatActivity {
                     if (mTTS.isLanguageAvailable(new Locale(Locale.getDefault().getLanguage()))
                             == TextToSpeech.LANG_AVAILABLE) {
                         mTTS.setLanguage(new Locale(Locale.getDefault().getLanguage()));
-                        mTTS.setPitch(1.4f);
-                        mTTS.setSpeechRate(1.0f);
+                        mTTS.setPitch(1.0f);
+                        mTTS.setSpeechRate(0.8f);
                     } else {
                         mTTS.setLanguage(Locale.US);
                     }

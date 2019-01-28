@@ -8,7 +8,7 @@
 
     <TextView
         android:id="@+id/title"
-        android:text="Цифры"
+        android:text="Учим цифры"
         android:textColor="@android:color/white"
         android:textSize="20sp"
         android:gravity="center_vertical|center_horizontal"

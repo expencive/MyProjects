@@ -43,9 +43,44 @@ public class AutoLogosActivity extends AppCompatActivity {
 
     private void initData() {
 
-        kidsLearningList.add(new KidsLearning(R.drawable.bmw, "БМВ"));
-        kidsLearningList.add(new KidsLearning(R.drawable.honda, "ХОНДА"));
-        kidsLearningList.add(new KidsLearning(R.drawable.chevrolet, "ШЕВРОЛЕ"));
+        kidsLearningList.add(new KidsLearning(R.drawable.m01acura, "АКУРА"));
+        kidsLearningList.add(new KidsLearning(R.drawable.m02alfaromeo, "АЛЬФА-РОМЕО"));
+        kidsLearningList.add(new KidsLearning(R.drawable.m03audi, "АУДИ"));
+        kidsLearningList.add(new KidsLearning(R.drawable.m04bmw, "БМВ"));
+        kidsLearningList.add(new KidsLearning(R.drawable.m05cadillac, "КАДИЛЛАК"));
+        kidsLearningList.add(new KidsLearning(R.drawable.m06cherry, "ЧЕРРИ"));
+        kidsLearningList.add(new KidsLearning(R.drawable.m07chevrolet, "ШЕВРОЛЕ"));
+        kidsLearningList.add(new KidsLearning(R.drawable.m08citroen, "СИТРОЕН"));
+        kidsLearningList.add(new KidsLearning(R.drawable.m09daewoo, "ДЭУ"));
+        kidsLearningList.add(new KidsLearning(R.drawable.m10ferrari, "ФЕРРАРИ"));
+        kidsLearningList.add(new KidsLearning(R.drawable.m11fiat, "ФИАТ"));
+        kidsLearningList.add(new KidsLearning(R.drawable.m12ford, "ФОРД"));
+        kidsLearningList.add(new KidsLearning(R.drawable.m14hyundai, "ХЮНДАЙ"));
+        kidsLearningList.add(new KidsLearning(R.drawable.m15infiniti, "ИНФИНИТИ"));
+        kidsLearningList.add(new KidsLearning(R.drawable.m16jaguar, "ЯГУАР"));
+        kidsLearningList.add(new KidsLearning(R.drawable.m17jeep, "ДЖИП"));
+        kidsLearningList.add(new KidsLearning(R.drawable.m18kia, "КИА"));
+        kidsLearningList.add(new KidsLearning(R.drawable.m19landrover, "ЛЭНД-РОВЕР"));
+        kidsLearningList.add(new KidsLearning(R.drawable.m20lexus, "ЛЕКСУС"));
+        kidsLearningList.add(new KidsLearning(R.drawable.m21lada, "ЛАДА"));
+        kidsLearningList.add(new KidsLearning(R.drawable.m22mazda, "МАЗДА"));
+        kidsLearningList.add(new KidsLearning(R.drawable.m23mersedes, "МЕРСЕДЕС"));
+        kidsLearningList.add(new KidsLearning(R.drawable.m24mini, "МИНИ"));
+        kidsLearningList.add(new KidsLearning(R.drawable.m25mitsubishi, "МИТСУБИСИ"));
+        kidsLearningList.add(new KidsLearning(R.drawable.m26nissan, "НИССАН"));
+        kidsLearningList.add(new KidsLearning(R.drawable.m27opel, "ОПЕЛЬ"));
+        kidsLearningList.add(new KidsLearning(R.drawable.m28pegeot, "ПЕЖО"));
+        kidsLearningList.add(new KidsLearning(R.drawable.m29porcshe, "ПОРШЕ"));
+        kidsLearningList.add(new KidsLearning(R.drawable.m30renault, "РЕНО"));
+        kidsLearningList.add(new KidsLearning(R.drawable.m31scoda, "ШКОДА"));
+        kidsLearningList.add(new KidsLearning(R.drawable.m32subaru, "СУБАРУ"));
+        kidsLearningList.add(new KidsLearning(R.drawable.m33suzuki, "СУЗУКИ"));
+        kidsLearningList.add(new KidsLearning(R.drawable.m34toyota, "ТОЙОТА"));
+        kidsLearningList.add(new KidsLearning(R.drawable.m35volkswagen, "ФОЛЬКСВАГЕН"));
+        kidsLearningList.add(new KidsLearning(R.drawable.m36volvo, "ВОЛЬВО"));
+        kidsLearningList.add(new KidsLearning(R.drawable.m37uaz, "УАЗ"));
+
+
 
     }
 

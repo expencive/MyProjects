@@ -9,7 +9,7 @@
 
     <TextView
         android:id="@+id/title"
-        android:text="Учим знаки, цифры, буквы"
+        android:text="Учим марки, цифры, буквы"
         android:textColor="@android:color/white"
         android:textSize="20sp"
         android:gravity="center_vertical|center_horizontal"
@@ -22,7 +22,8 @@
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:layout_below="@+id/title"
-        android:src="@drawable/honda" />
+        android:scaleType="centerCrop"
+        android:src="@drawable/learnautologos2" />
 
     <ImageView
         android:id="@+id/image_view_numbers"
@@ -30,13 +31,15 @@
         android:layout_height="200dp"
         android:layout_above="@+id/image_view_letters"
         android:layout_below="@+id/image_view_auto_logos"
-        android:src="@drawable/chevrolet" />
+        android:scaleType="centerCrop"
+        android:src="@drawable/learnnumbersver12" />
 
     <ImageView
         android:id="@+id/image_view_letters"
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:src="@drawable/bmw"
+        android:scaleType="centerCrop"
+        android:src="@drawable/learnletters2"
         android:layout_alignParentBottom="true"
          />
 
