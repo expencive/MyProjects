@@ -29,6 +29,7 @@ import com.gmail.expencive.androidnewsapp.api.ApiClient;
 import com.gmail.expencive.androidnewsapp.api.ApiInterface;
 import com.gmail.expencive.androidnewsapp.models.Article;
 import com.gmail.expencive.androidnewsapp.models.News;
+import com.gmail.expencive.androidnewsapp.models.RotateViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -51,6 +52,8 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
     private ImageView errorImage;
     private TextView errorTitle, errorMessage;
     private Button buttonRetry;
+
+    private RotateViewModel rotateViewModel;
 
 
 

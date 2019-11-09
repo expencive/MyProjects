@@ -40,4 +40,7 @@ dependencies {
 
     //Times Formater
     implementation 'org.ocpsoft.prettytime:prettytime:4.0.1.Final'
+
+    implementation "android.arch.lifecycle:extensions:1.1.1"
+    annotationProcessor "android.arch.lifecycle:compiler:1.0.0"
 }
