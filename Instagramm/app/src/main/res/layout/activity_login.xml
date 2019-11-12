@@ -7,7 +7,7 @@
     android:fillViewport="true"
     android:id="@+id/scroll_view"
     android:scrollbars="none"
-    tools:context=".LoginActivity">
+    tools:context=".activities.LoginActivity">
 
 
     <androidx.constraintlayout.widget.ConstraintLayout

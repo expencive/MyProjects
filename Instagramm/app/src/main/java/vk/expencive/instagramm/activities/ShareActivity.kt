@@ -1,7 +1,8 @@
-package vk.expencive.instagramm
+package vk.expencive.instagramm.activities
 
 import android.os.Bundle
 import android.util.Log
+import vk.expencive.instagramm.R
 
 class ShareActivity : BaseActivity(2) {
     private val TAG = "ShareActivity"

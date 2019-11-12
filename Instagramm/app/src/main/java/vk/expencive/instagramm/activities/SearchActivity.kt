@@ -1,7 +1,8 @@
-package vk.expencive.instagramm
+package vk.expencive.instagramm.activities
 
 import android.os.Bundle
 import android.util.Log
+import vk.expencive.instagramm.R
 
 class SearchActivity : BaseActivity(1) {
     private val TAG = "SearchActivity"

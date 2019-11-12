@@ -1,9 +1,10 @@
-package vk.expencive.instagramm
+package vk.expencive.instagramm.activities
 
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import kotlinx.android.synthetic.main.activity_profile.*
+import vk.expencive.instagramm.R
 
 class ProfileActivity : BaseActivity(4) {
     private val TAG = "ProfileActivity"
