@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "182428240473",
+    "firebase_url": "https://instagramm-e36f7.firebaseio.com",
+    "project_id": "instagramm-e36f7",
+    "storage_bucket": "instagramm-e36f7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:182428240473:android:842a93b39e218320467f48",
+        "android_client_info": {
+          "package_name": "vk.expencive.instagramm"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "182428240473-8bd4ph2eilausps3jjlgaaj231hnetd1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "vk.expencive.instagramm",
+            "certificate_hash": "e90f2f4ed6f654086a1c3a2c687f3b86301b16a4"
+          }
+        },
+        {
+          "client_id": "182428240473-85t588e0emo3lk2rmngj5nsvqj4iu692.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAzltOgsJx_oJyICZm1U9MJdAN9dVogFFc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "182428240473-85t588e0emo3lk2rmngj5nsvqj4iu692.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
