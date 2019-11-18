@@ -16,7 +16,7 @@ import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.toast
 import vk.expencive.instagramm.R
 
-class LoginActivity : AppCompatActivity(), KeyboardVisibilityEventListener, TextWatcher,
+class LoginActivity : AppCompatActivity(), KeyboardVisibilityEventListener,
     View.OnClickListener {
 
 
@@ -28,9 +28,7 @@ class LoginActivity : AppCompatActivity(), KeyboardVisibilityEventListener, Text
         setContentView(R.layout.activity_login)
         Log.d(TAG, "onCreate: ")
         KeyboardVisibilityEvent.setEventListener(this, this)
-        login_btn.isEnabled = false
-        email_input.addTextChangedListener(this)
-        password_input.addTextChangedListener(this)
+        coordinateBtnandImputs(login_btn, email_input, password_input)
         login_btn.setOnClickListener(this)
         create_account_text.setOnClickListener(this)
         mAuth = FirebaseAuth.getInstance()
@@ -62,25 +60,17 @@ class LoginActivity : AppCompatActivity(), KeyboardVisibilityEventListener, Text
 
     override fun onVisibilityChanged(isKeyboardOpen: Boolean) {
         if (isKeyboardOpen) {
-            scroll_view.scrollTo(0, scroll_view.bottom)
             create_account_text.visibility = View.GONE
         } else {
-            scroll_view.scrollTo(0, scroll_view.top)
             create_account_text.visibility = View.VISIBLE
         }
     }
 
-    override fun afterTextChanged(p0: Editable?) {
-        login_btn.isEnabled = validate(email_input.text.toString(), password_input.text.toString())
-    }
+//    override fun afterTextChanged(p0: Editable?) {
+//        login_btn.isEnabled = validate(email_input.text.toString(), password_input.text.toString())
+//    }
 
     private fun validate(email: String, password: String) = email.isNotEmpty()
             && password.isNotEmpty()
-
-    override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-    }
-
-    override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-    }
 
 }

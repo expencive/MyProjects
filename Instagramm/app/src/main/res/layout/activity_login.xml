@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<vk.expencive.instagramm.views.KeyboardAwareScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fillViewport="true"
-    android:id="@+id/scroll_view"
-    android:scrollbars="none"
-    tools:context=".activities.LoginActivity">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/scroll_view">
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -61,4 +58,4 @@
             app:layout_constraintBottom_toBottomOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-</ScrollView>
+</vk.expencive.instagramm.views.KeyboardAwareScrollView>
