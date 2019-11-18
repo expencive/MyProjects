@@ -10,7 +10,7 @@ import kotlinx.android.synthetic.main.activity_edit_profile.*
 import vk.expencive.instagramm.models.User
 import vk.expencive.instagramm.views.PasswordDialog
 import vk.expencive.instagramm.R
-import vk.expencive.instagramm.utils.CameraPictureTaker
+import vk.expencive.instagramm.utils.CameraHelper
 import vk.expencive.instagramm.utils.FirebaseHelper
 
 
@@ -21,21 +21,21 @@ class EditProfileActivity : AppCompatActivity(), PasswordDialog.Listener {
     private val TAG = "EditProfileActivity"
     private lateinit var mUser: User
     private lateinit var mPendingUser: User
-    private lateinit var cameraPictureTaker: CameraPictureTaker
+    private lateinit var cameraHelper: CameraHelper
 
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_edit_profile)
-        cameraPictureTaker = CameraPictureTaker(this)
+        cameraHelper = CameraHelper(this)
         mFirebaseHelper = FirebaseHelper(this)
 
 
         Log.d(TAG, "onCreate: ")
         close_image.setOnClickListener { finish() }
         save_image.setOnClickListener { updateProfile() }
-        change_photo_text.setOnClickListener { cameraPictureTaker.takeCameraPicture() }
+        change_photo_text.setOnClickListener { cameraHelper.takeCameraPicture() }
 
         mFirebaseHelper.currentUserReference()
             .addListenerForSingleValueEvent(ValueEventListenerAdapter {
@@ -55,10 +55,10 @@ class EditProfileActivity : AppCompatActivity(), PasswordDialog.Listener {
 
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        if (requestCode == cameraPictureTaker.TAKE_REQUEST_CODE && resultCode == RESULT_OK) {
+        if (requestCode == cameraHelper.TAKE_REQUEST_CODE && resultCode == RESULT_OK) {
             val uid = mFirebaseHelper.mAuth.currentUser!!.uid
             val ref = mFirebaseHelper.mStorage.child("users/$uid/photo")
-            ref.putFile(cameraPictureTaker.imageUri!!).addOnCompleteListener {
+            ref.putFile(cameraHelper.imageUri!!).addOnCompleteListener {
                 if (it.isSuccessful) {
                     ref.downloadUrl.addOnCompleteListener {
                         if (it.isSuccessful){
