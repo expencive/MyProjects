@@ -6,37 +6,36 @@ import android.util.Log
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_home.*
 import vk.expencive.instagramm.R
+import vk.expencive.instagramm.utils.FirebaseHelper
 
 class HomeActivity : BaseActivity(0) {
     private val TAG = "HomeActivity"
-    private lateinit var mAuth: FirebaseAuth
+    private lateinit var mFirebase: FirebaseHelper
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
         setupBottomNavigation()
         Log.d(TAG, "onCreate: ")
 
-        mAuth = FirebaseAuth.getInstance();
-        sign_out_text.setOnClickListener { mAuth.signOut() }
-        mAuth.addAuthStateListener {
-            if (mAuth.currentUser==null){
+        mFirebase = FirebaseHelper(this)
+        sign_out_text.setOnClickListener { mFirebase.mAuth.signOut() }
+        mFirebase.mAuth.addAuthStateListener {
+            if (mFirebase.mAuth.currentUser==null){
                 startActivity(Intent(this, LoginActivity::class.java))
                 finish()
             }
         }
-//        mAuth.signInWithEmailAndPassword("expencive@bk.ru", "123456")
-//            .addOnCompleteListener {
-//                if (it.isSuccessful){
-//                    Log.d(TAG, "signIn sucsess")
-//                }else{
-//                    Log.d(TAG, "signIn failure", it.exception)
-//                }
-//            }
+        mFirebase.mDatabase.child("feed-posts").child(mFirebase.mAuth.currentUser!!.uid)
+            .addValueEventListener(ValueEventListenerAdapter{
+                val posts = it.children.map { it.getValue(FeedPost::class.java)!! }
+                Log.d(TAG, "feed posts: ${posts.joinToString("\n", "\n")}")
+            })
+
     }
 
     override fun onStart() {
         super.onStart()
-        if (mAuth.currentUser==null){
+        if (mFirebase.mAuth.currentUser==null){
             startActivity(Intent(this, LoginActivity::class.java))
             finish()
         }
