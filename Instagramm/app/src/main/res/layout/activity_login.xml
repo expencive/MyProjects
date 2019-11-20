@@ -23,9 +23,9 @@
 
         <EditText
             android:id="@+id/email_input"
-            style="@style/login_input"
+            style="@style/big_input"
             android:layout_marginTop="40dp"
-            android:background="@drawable/login_input_bg"
+            android:background="@drawable/big_input_bg"
             android:hint="Email"
             android:inputType="textEmailAddress"
             app:layout_constraintTop_toBottomOf="@+id/instagramm_image"
@@ -33,8 +33,8 @@
 
         <EditText
             android:id="@+id/password_input"
-            style="@style/login_input"
-            android:background="@drawable/login_input_bg"
+            style="@style/big_input"
+            android:background="@drawable/big_input_bg"
             android:hint="Password"
             android:inputType="textPassword"
             app:layout_constraintTop_toBottomOf="@+id/email_input"
@@ -42,8 +42,8 @@
 
         <Button
             android:id="@+id/login_btn"
-            style="@style/login_button"
-            android:background="@drawable/login_btn_bg"
+            style="@style/big_button"
+            android:background="@drawable/btn_bg"
             android:text="LOG IN"
             app:layout_constraintTop_toBottomOf="@+id/password_input"
             tools:ignore="MissingConstraints" />
