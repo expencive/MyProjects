@@ -59,3 +59,7 @@ fun Editable.toStringOrNull(): String?{
     val str = toString()
     return if (str.isEmpty()) null else str
 }
+
+fun ImageView.loadImage(image: String?){
+    Glide.with(this).load(image).centerCrop().into(this)
+}

@@ -114,9 +114,7 @@ class FeedAdapter(private val posts: List<FeedPost>): RecyclerView.Adapter<FeedA
 
     }
 
-    private fun ImageView.loadImage(image: String?){
-        Glide.with(this).load(image).centerCrop().into(this)
-    }
+
 
 
     class ViewHolder(val view: View): RecyclerView.ViewHolder(view){}

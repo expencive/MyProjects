@@ -78,9 +78,7 @@ class ImagesAdapter(private val images: List<String>):
 
     }
 
-    private fun ImageView.loadImage(image: String){
-        Glide.with(this).load(image).centerCrop().into(this)
-    }
+
     override fun getItemCount(): Int = images.size;
 
 
