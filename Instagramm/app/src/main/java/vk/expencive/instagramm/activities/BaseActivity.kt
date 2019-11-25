@@ -32,6 +32,7 @@ abstract class BaseActivity(val navNumber: Int): AppCompatActivity() {
             if (nextActivity!=null){
                 val intent = Intent(this, nextActivity)
                 intent.flags = Intent.FLAG_ACTIVITY_NO_ANIMATION
+                intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
                 startActivity(intent)
                 overridePendingTransition(0,0)
                 true
@@ -49,4 +50,11 @@ abstract class BaseActivity(val navNumber: Int): AppCompatActivity() {
         }
 
     }
+
+    override fun onPause() {
+        super.onPause()
+        overridePendingTransition(0,0)
+    }
+
+
 }

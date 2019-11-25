@@ -39,7 +39,7 @@ class EditProfileActivity : AppCompatActivity(), PasswordDialog.Listener {
 
         mFirebaseHelper.currentUserReference()
             .addListenerForSingleValueEvent(ValueEventListenerAdapter {
-                mUser = it.getValue(User::class.java)!!
+                mUser = it.asUser()!!
                 name_input.setText(mUser.name)
                 username_input.setText(mUser.username)
                 website_input.setText(mUser.website)
@@ -56,7 +56,7 @@ class EditProfileActivity : AppCompatActivity(), PasswordDialog.Listener {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         if (requestCode == cameraHelper.TAKE_REQUEST_CODE && resultCode == RESULT_OK) {
-            val uid = mFirebaseHelper.mAuth.currentUser!!.uid
+            val uid = mFirebaseHelper.currentUid()!!
             val ref = mFirebaseHelper.mStorage.child("users/$uid/photo")
             ref.putFile(cameraHelper.imageUri!!).addOnCompleteListener {
                 if (it.isSuccessful) {
@@ -151,7 +151,7 @@ class EditProfileActivity : AppCompatActivity(), PasswordDialog.Listener {
         if (user.bio != mUser.bio) updatesMap["bio"] = user.bio
         if (user.email != mUser.email) updatesMap["email"] = user.email
         if (user.phone != mUser.phone) updatesMap["phone"] = user.phone
-        mFirebaseHelper.updateUser(mFirebaseHelper.mAuth.currentUser!!.uid, updatesMap) {
+        mFirebaseHelper.updateUser(mFirebaseHelper.currentUid()!!, updatesMap) {
             showToast("Profile saved")
             finish()
         }

@@ -1,18 +1,15 @@
 package vk.expencive.instagramm.activities
 
-import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import com.bumptech.glide.Glide
-import com.google.firebase.database.ServerValue
 import kotlinx.android.synthetic.main.activity_share.*
-import org.jetbrains.anko.startActivity
 import vk.expencive.instagramm.R
+import vk.expencive.instagramm.models.FeedPost
 import vk.expencive.instagramm.models.User
 import vk.expencive.instagramm.utils.CameraHelper
 import vk.expencive.instagramm.utils.FirebaseHelper
-import java.util.*
 
 class ShareActivity : BaseActivity(2) {
     private val TAG = "ShareActivity"
@@ -32,7 +29,7 @@ class ShareActivity : BaseActivity(2) {
         share_text.setOnClickListener { share() }
 
         mFirebase.currentUserReference().addValueEventListener(ValueEventListenerAdapter{
-            mUser = it.getValue(User::class.java)!!
+            mUser = it.asUser()!!
         })
     }
 
@@ -56,9 +53,9 @@ class ShareActivity : BaseActivity(2) {
                 it.metadata!!.reference!!.downloadUrl.addOnSuccessListener {
                     val imageDownloadUrl = it.toString()
                     mFirebase.addSharePhoto(imageDownloadUrl) {
-                        mFirebase.mDatabase.child("feed-posts").child(mFirebase.mAuth.currentUser!!.uid)
+                        mFirebase.mDatabase.child("feed-posts").child(mFirebase.currentUid()!!)
                             .push()
-                            .setValue(makeFeedPost(imageDownloadUrl, mFirebase.mAuth.currentUser!!.uid))
+                            .setValue(makeFeedPost(imageDownloadUrl, mFirebase.currentUid()!!))
                             .addOnCompleteListener {
                                 if (it.isSuccessful){
                                     startActivity(Intent(this, ProfileActivity::class.java))
@@ -87,25 +84,12 @@ class ShareActivity : BaseActivity(2) {
 
 }
 
-data class FeedPost(val uid: String = "", val username: String = "",
-                    val image: String = "", val likesCount: Int = 0, val commentsCount: Int = 0,
-                    val caption: String = "", val comments: List<Comment> = emptyList(),
-                    val timestamp: Any = ServerValue.TIMESTAMP, val photo: String? = null){
-
-    fun timestampDate(): Date = Date(timestamp as Long)
-
-}
-
-data class Comment(val uid: String, val username: String, val text: String){
-
-}
-
 
 //    private fun share() {
 ////        val imageUri = mCamera.imageUri
 ////        if (imageUri !=null){
 ////            //upload picture to user folder <-storage
-////            val uid = mFirebase.mAuth.currentUser!!.uid
+////            val uid = mFirebase.currentUid()!!
 ////            mFirebase.mStorage.child("users").child(uid)
 ////                .child("images").child(imageUri.lastPathSegment!!).putFile(imageUri)
 ////                .addOnCompleteListener {

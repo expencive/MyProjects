@@ -1,18 +1,21 @@
 package vk.expencive.instagramm.activities
 
 import android.os.Bundle
-import android.os.PersistableBundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.gms.tasks.Tasks
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseReference
 import kotlinx.android.synthetic.main.activity_add_friends.*
 import kotlinx.android.synthetic.main.item_add_friends.view.*
 import vk.expencive.instagramm.R
 import vk.expencive.instagramm.models.User
 import vk.expencive.instagramm.utils.FirebaseHelper
+import vk.expencive.instagramm.utils.TaskSourceOnCompleteListener
 
 class AddFriendsActivity: AppCompatActivity(), FriendsAdapter.Listener {
 
@@ -30,13 +33,15 @@ class AddFriendsActivity: AppCompatActivity(), FriendsAdapter.Listener {
 
         mAdapter = FriendsAdapter(this)
 
-        val uid = mFirebase.mAuth.currentUser!!.uid
+        val uid = mFirebase.currentUid()!!
+
+        back_image.setOnClickListener { finish() }
 
         add_friends_recycler.adapter = mAdapter
         add_friends_recycler.layoutManager = LinearLayoutManager(this)
 
         mFirebase.mDatabase.child("users").addValueEventListener(ValueEventListenerAdapter{
-            val allUsers = it.children.map { it.getValue(User::class.java)!!.copy(uid = it.key) }
+            val allUsers = it.children.map { it.asUser()!! }
             val (userList, othersUserList) = allUsers.partition { it.uid == uid }
             mUser = userList.first()
             mUsers = othersUserList
@@ -44,6 +49,8 @@ class AddFriendsActivity: AppCompatActivity(), FriendsAdapter.Listener {
             mAdapter.update(mUsers, mUser.follows)
         })
     }
+
+
 
     override fun follow(uid: String) {
         setFollow(uid, true){
@@ -60,16 +67,37 @@ class AddFriendsActivity: AppCompatActivity(), FriendsAdapter.Listener {
     }
 
     private fun setFollow(uid: String, follow: Boolean, onSuccess: () -> Unit){
-        val followTask = mFirebase.mDatabase.child("users").child(mUser.uid!!).child("follows")
-            .child(uid)
-        val setFollow = if (follow) followTask.setValue(true) else followTask.removeValue()
+
+        val followsTask = mFirebase.mDatabase.child("users").child(mUser.uid).child("follows")
+            .child(uid).setValueTrueOrRemove(follow)
+
+        val followersTask = mFirebase.mDatabase.child("users").child(uid).child("followers")
+            .child(mUser.uid).setValueTrueOrRemove(follow)
 
 
-        val followerTask = mFirebase.mDatabase.child("users").child(uid).child("followers")
-            .child(mUser.uid!!)
-        val setFollower = if (follow)followerTask.setValue(true) else followerTask.removeValue()
 
-        setFollow.continueWithTask({setFollower}).addOnCompleteListener {
+        val feedPostsTask = task<Void> {taskSource ->
+            mFirebase.mDatabase.child("feed-posts").child(uid)
+                .addListenerForSingleValueEvent(ValueEventListenerAdapter {
+                    val postsMap = if (follow) {
+                        it.children.map { it.key to it.value }.toMap()
+                    } else {
+                        it.children.map { it.key to null }.toMap()
+
+                    }
+                    mFirebase.mDatabase.child("feed-posts").child(mUser.uid)
+                        .updateChildren(postsMap)
+                        .addOnCompleteListener(
+                            TaskSourceOnCompleteListener(
+                                taskSource
+                            )
+                        )
+                })
+        }
+
+
+        Tasks.whenAll(followsTask, followersTask, feedPostsTask)
+            .addOnCompleteListener {
             if (it.isSuccessful){
                 onSuccess()
             }else{
@@ -103,7 +131,7 @@ class FriendsAdapter(private val listener: Listener): RecyclerView.Adapter<Frien
         val user = mUsers[position]
 
         with(holder){
-            view.photo_image.loadImage(user.photo)
+            view.photo_image.loadUserPhoto(user.photo)
             view.username_text.text = user.username
             view.name_text.text = user.name
 
