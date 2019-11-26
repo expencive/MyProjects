@@ -49,7 +49,7 @@ class HomeActivity : BaseActivity(0), FeedAdapter.Listener {
             }
         }
         mBaseViewModel = ViewModelProviders.of(this)[BaseViewModel::class.java]
-        mBaseViewModel.refreshTransactions()
+
 
 
 
